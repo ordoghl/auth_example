@@ -1,0 +1,9 @@
+<% if local_assigns[:form]&.object&.errors&.any? %>
+  <div class="p-4 has-background-danger-light has-border-danger">
+    <ul>
+      <% local_assigns[:form].object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

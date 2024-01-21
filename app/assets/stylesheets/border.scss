@@ -1,0 +1,11 @@
+@use 'sass:list';
+
+@each $name, $color in $colors {
+  .has-border-#{$name} {
+    border: 1px solid #{list.nth($color, 1)};
+  }
+
+  .has-thick-border-#{$name} {
+    border: 2px solid #{list.nth($color, 1)};
+  }
+}

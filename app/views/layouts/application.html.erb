@@ -1,16 +1,29 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>AuthExample</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="en">
+<head>
+  <title>AuthExample</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body class="p-4">
+<% if notice.present? %>
+  <div class="has-background-info-light p-4"><%= notice %></div>
+<% end %>
+<% if alert.present? %>
+  <div class="has-background-danger-light p-4 "><%= alert %></div>
+<% end %>
+<% if user_signed_in? %>
+  <%= link_to "Edit Password", edit_password_path %>
+  <%= button_to "Log out", session_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign Up", new_registration_path %>
+  <%= link_to "Log In", new_session_path %>
+<% end %>
+<%= yield %>
+</body>
 </html>

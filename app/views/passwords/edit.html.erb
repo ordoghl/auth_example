@@ -1,0 +1,18 @@
+<h1>Change Password</h1>
+
+<%= form_with model: @user, url: password_path do |form| %>
+  <%= render "shared/form_errors", form: form %>
+  <div>
+    <%= form.label :password_challenge, 'Current Password' %>
+    <%= form.password_field :password_challenge %>
+  </div>
+  <div>
+    <%= form.label :password, 'New Password' %>
+    <%= form.password_field :password %>
+  </div>
+  <div>
+    <%= form.label :password_confirmation, 'Confirm New Password' %>
+    <%= form.password_field :password_confirmation %>
+  </div>
+  <%= form.submit "Change Password" %>
+<% end %>
